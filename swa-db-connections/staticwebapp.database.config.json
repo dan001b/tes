@@ -1,0 +1,101 @@
+{
+  "$schema": "https://github.com/Azure/data-api-builder/releases/latest/download/dab.draft.schema.json",
+  "data-source": {
+    "database-type": "cosmosdb_nosql",
+    "options": {
+      "database": "main",
+      "schema": "staticwebapp.database.schema.gql"
+    },
+    "connection-string": "@env('DATABASE_CONNECTION_STRING')"
+  },
+  "runtime": {
+    "rest": {
+      "enabled": true,
+      "path": "/api"
+    },
+    "graphql": {
+      "allow-introspection": true,
+      "enabled": true,
+      "path": "/graphql"
+    },
+    "host": {
+      "mode": "production",
+      "cors": {
+        "origins": [
+          "https://reg.kreftforeningen.no",
+          "https://regtest.kreftforeningen.no"
+        ],
+        "allow-credentials": false
+      },
+      "authentication": {
+        "provider": "StaticWebApps"
+      }
+    }
+  },
+  "entities": {
+    "Registration": {
+      "source": "registration",
+      "permissions": [
+        {
+          "actions": ["*"],
+          "role": "anonymous"
+        }
+      ]
+    },
+    "Location": {
+      "source": "location",
+      "permissions": [
+        {
+          "actions": ["read"],
+          "role": "anonymous"
+        }
+      ]
+    },
+    "Config": {
+      "source": "location",
+      "permissions": [
+        {
+          "actions": ["read"],
+          "role": "anonymous"
+        }
+      ]
+    },
+    "QuestionText": {
+      "source": "location",
+      "permissions": [
+        {
+          "actions": ["read"],
+          "role": "anonymous"
+        }
+      ]
+    },
+    "AnswerOptions": {
+      "source": "location",
+      "permissions": [
+        {
+          "actions": ["read"],
+          "role": "anonymous"
+        }
+      ]
+    },
+
+    "Question": {
+      "source": "location",
+      "permissions": [
+        {
+          "actions": ["read"],
+          "role": "anonymous"
+        }
+      ]
+    },
+    "Answer": {
+      "source": "location",
+      "permissions": [
+        {
+          "actions": ["read"],
+          "role": "anonymous"
+        }
+      ]
+    }
+  }
+}

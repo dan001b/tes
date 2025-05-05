@@ -1,0 +1,44 @@
+type Registration @model {
+  id: String
+  location: String
+  firstTime: String
+  recommendation: String
+  type: String
+  ts: String
+}
+
+type Location @model {
+  name: String
+  exp: String
+  token: String
+}
+
+type QuestionText {
+  no: String
+  en: String
+}
+
+type AnswerOptions {
+  no: String
+  en: String
+}
+
+type Question {
+  questionId: String
+  questionText: QuestionText
+  intervalMin: Int
+  intervalMax: Int
+  dependent: String
+  answers: [Answer]
+}
+
+type Answer {
+  key: String
+  value: AnswerOptions
+}
+
+type Config @model {
+  title: String
+  logo: String
+  questions: [Question]
+}
